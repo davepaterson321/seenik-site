@@ -10,7 +10,7 @@
 
   <header>
     <div class="container nav">
-      <div class="logo">SEENIK</div>
+      <a href="/" class="logo"><img src="images/logo.svg" alt="SEENIK"></a>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#collection">Collection</a>
@@ -20,107 +20,83 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Premium display environments</div>
-        <h1>Bring your collection to life.</h1>
-        <p class="hero-copy">
-          SEENIK creates premium scenic backdrops for scale model collectors, painters,
-          photographers and tabletop hobbyists — designed to turn a plain display into
-          an immersive miniature world.
+    <section class="hero hero--cinematic">
+      <div class="hero__bg">
+        <img src="images/hero/backdrop.jpg" alt="" aria-hidden="true">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>PREMIUM&nbsp;BACKDROPS FOR&nbsp;COLLECTORS</h1>
+        <p class="hero__tagline">
+          Elevate your displays and model photography with collector-grade panoramic environments.
         </p>
-
         <div class="cta-row">
-          <a class="button button-primary" href="#collection">View the first collection</a>
-          <a class="button button-secondary" href="#buy">Find us on eBay</a>
-        </div>
-
-        <div class="hero-image">
-          <img src="https://placehold.co/1400x620" alt="SEENIK scenic backdrop preview">
+          <a class="button button-primary" href="#buy">Find us on eBay</a>
         </div>
       </div>
+      <a href="#collection" class="hero__scroll" aria-label="Scroll to collection">
+        <span class="hero__scroll-text">DISCOVER</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
     </section>
 
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">Designed for collectors</h2>
-        <p class="section-copy">
-          From display cabinets and photography setups to store displays and gaming spaces,
-          SEENIK backdrops are made to add atmosphere, realism and a stronger sense of scale.
+    <section id="about" class="section section--statement">
+      <div class="container container--narrow">
+        <h2 class="statement__title">What is SEENIK</h2>
+        <p class="statement__copy">
+          SEENIK creates premium scenic backdrops for scale model collectors, painters, photographers and tabletop hobbyists. From display cabinets and photography to gaming spaces, our backdrops add atmosphere, realism and a stronger sense of scale.
         </p>
       </div>
     </section>
 
-    <section id="collection">
+    <section id="collection" class="section section--gallery">
       <div class="container">
-        <h2 class="section-title">The first SEENIK collection</h2>
+        <h2 class="section-title">A world of atmosphere</h2>
         <p class="section-copy">
-          Our launch range includes dramatic scenic environments suited to historical,
-          fantasy and wider hobby displays.
+          Our first collection — dramatic environments for historical, fantasy and hobby displays.
         </p>
-
-        <div class="cards">
-          <article class="card">
-            <img src="images/products/stalingrad.jpg" alt="Stalingrad backdrop">
-            <div class="card-body">
-              <h3>Stalingrad</h3>
-              <p>Battle-worn urban drama for wartime and ruined city displays.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="images/products/jacobean.jpg" alt="Jacobean backdrop">
-            <div class="card-body">
-              <h3>Jacobean</h3>
-              <p>Rich period atmosphere with flexibility for historical scenes.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="images/products/napoleonic.jpg" alt="Napoleonic backdrop">
-            <div class="card-body">
-              <h3>Napoleonic</h3>
-              <p>Open battlefield character for classic military and collector displays.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="images/products/oil-fields.jpg" alt="Oil Fields backdrop">
-            <div class="card-body">
-              <h3>Oil Fields</h3>
-              <p>Industrial atmosphere with strong crossover appeal for multiple eras.</p>
-            </div>
-          </article>
-        </div>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item">
+          <img src="images/products/stalingrad.jpg" alt="Stalingrad — battle-worn urban drama">
+          <figcaption class="gallery__caption">Stalingrad</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="images/products/jacobean.jpg" alt="Jacobean — rich period atmosphere">
+          <figcaption class="gallery__caption">Jacobean</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="images/products/napoleonic.jpg" alt="Napoleonic — open battlefield character">
+          <figcaption class="gallery__caption">Napoleonic</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="images/products/oil-fields.jpg" alt="Oil Fields — industrial atmosphere">
+          <figcaption class="gallery__caption">Oil Fields</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section>
-      <div class="container split">
-        <div class="panel">
-          <h2>Why SEENIK</h2>
-          <p>
-            Collectors invest huge time, skill and care into their models. The backdrop
-            should elevate that effort, not disappear behind it.
-          </p>
-          <div class="bullet-list">
-            <div class="bullet">Premium scenic environments for hobby displays</div>
-            <div class="bullet">Designed for cabinets, photography and tabletop presentation</div>
-            <div class="bullet">Collector-focused themes with broad display versatility</div>
-            <div class="bullet">A modern brand built around atmosphere and immersion</div>
-          </div>
-        </div>
+    <section class="section section--purpose">
+      <div class="container container--narrow">
+        <h2 class="section-title">Why SEENIK</h2>
+        <p class="purpose__lead">
+          Collectors invest huge time, skill and care into their models. The backdrop should elevate that effort, not disappear behind it.
+        </p>
+        <ul class="bullet-list">
+          <li class="bullet">Premium scenic environments for hobby displays</li>
+          <li class="bullet">Designed for cabinets, photography and tabletop presentation</li>
+          <li class="bullet">Collector-focused themes with broad display versatility</li>
+          <li class="bullet">A modern brand built around atmosphere and immersion</li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="panel ebay-box" id="buy">
-          <h2>Launching via eBay</h2>
-          <p>
-            Our first products will be available through eBay while the full SEENIK site is in development.
-          </p>
-          <p>
-            eBay store link coming shortly.
-          </p>
-          <a class="button button-primary" href="#">eBay link coming soon</a>
-        </div>
+    <section id="buy" class="section section--cta">
+      <div class="container container--narrow">
+        <p class="cta__copy">
+          Our first products will be available through eBay while the full SEENIK site is in development. Store link coming shortly.
+        </p>
+        <a class="button button-primary" href="#">eBay link coming soon</a>
       </div>
     </section>
   </main>

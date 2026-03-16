@@ -4,11 +4,52 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('fonts/IBMPlexSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('fonts/IBMPlexSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('fonts/IBMPlexSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('fonts/IBMPlexSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   background: #0d0f12;
   color: #f4f4f4;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 a {
@@ -21,10 +62,15 @@ a {
   margin: 0 auto;
 }
 
+.container--narrow {
+  max-width: 720px;
+}
+
+/* Header */
 header {
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: rgba(13,15,18,0.95);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 15, 18, 0.95);
   position: sticky;
   top: 0;
   backdrop-filter: blur(8px);
@@ -38,9 +84,16 @@ header {
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  max-height: 1.6rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -50,31 +103,108 @@ header {
   opacity: 0.9;
 }
 
-.hero {
-  padding: 88px 0 56px;
+.nav-links a {
+  padding: 8px 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hero — full-bleed cinematic */
+.hero--cinematic {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 0;
 }
 
-.eyebrow {
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 18px;
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-h1 {
-  font-size: clamp(2.4rem, 6vw, 4.8rem);
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 15, 18, 0.5) 0%,
+    rgba(13, 15, 18, 0.25) 40%,
+    rgba(13, 15, 18, 0.7) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 92%);
+  padding: 48px 24px 56px;
+}
+
+.hero--cinematic h1 {
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-.hero-copy {
-  max-width: 760px;
+.hero__tagline {
+  max-width: 560px;
   margin: 0 auto 32px;
-  font-size: 1.15rem;
-  color: rgba(255,255,255,0.82);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+}
+
+/* Hero scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  min-height: 44px;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  transition: opacity 0.2s ease;
+}
+
+.hero__scroll:hover {
+  opacity: 0.9;
+}
+
+.hero__scroll-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .cta-row {
@@ -82,15 +212,18 @@ h1 {
   justify-content: center;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 42px;
 }
 
 .button {
   display: inline-block;
-  padding: 14px 22px;
+  padding: 14px 24px;
+  min-height: 48px;
   border-radius: 999px;
   font-weight: 600;
+  font-size: 1rem;
   transition: 0.2s ease;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .button-primary {
@@ -99,7 +232,7 @@ h1 {
 }
 
 .button-secondary {
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
 }
 
@@ -108,139 +241,189 @@ h1 {
   opacity: 0.95;
 }
 
-.hero-image {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: #161a20;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
-
-.hero-image img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-}
-
-section {
-  padding: 72px 0;
+/* Sections — more spacing and hierarchy */
+.section {
+  padding: 96px 0;
 }
 
 .section-title {
-  font-size: 2rem;
-  margin-bottom: 14px;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .section-copy {
-  max-width: 760px;
-  margin: 0 auto 36px;
+  max-width: 640px;
+  margin: 0 auto 48px;
   text-align: center;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 1.05rem;
+  line-height: 1.6;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* What is SEENIK */
+.section--statement {
+  padding: 80px 0 96px;
 }
 
-.card {
-  background: #151920;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
+.statement__title {
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.statement__copy {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+/* Gallery — editorial, full-width */
+.section--gallery {
+  padding: 96px 0 0;
+}
+
+.section--gallery .section-copy {
+  margin-bottom: 56px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+}
+
+.gallery__item {
+  width: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
-.card img {
+.gallery__item img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   display: block;
-  background: #1d222b;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center center;
+  background: #161a20;
 }
 
-.card-body {
-  padding: 16px;
+.gallery__caption {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 16px 24px 24px;
+  letter-spacing: 0.05em;
 }
 
-.card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 8px;
+/* Brand purpose */
+.section--purpose {
+  padding: 96px 0;
 }
 
-.card p {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.72);
-}
-
-.split {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
-  align-items: center;
-}
-
-.panel {
-  background: #151920;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 28px;
-}
-
-.panel h2 {
-  margin-bottom: 14px;
-  font-size: 1.8rem;
-}
-
-.panel p {
-  color: rgba(255,255,255,0.78);
-  margin-bottom: 14px;
+.purpose__lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  text-align: center;
 }
 
 .bullet-list {
+  list-style: none;
   display: grid;
-  gap: 10px;
-  color: rgba(255,255,255,0.82);
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .bullet {
-  padding-left: 18px;
+  padding-left: 22px;
   position: relative;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .bullet::before {
   content: "•";
   position: absolute;
   left: 0;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.ebay-box {
+/* Soft CTA */
+.section--cta {
+  padding: 80px 0 96px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cta__copy {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.78);
   text-align: center;
-  padding: 40px 28px;
+  margin-bottom: 28px;
+  line-height: 1.6;
 }
 
+.section--cta .button {
+  display: block;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Footer */
 footer {
-  padding: 36px 0 50px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.62);
+  padding: 40px 0 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.62);
   text-align: center;
   font-size: 0.95rem;
 }
 
-@media (max-width: 980px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
+/* Mobile — viewport-filling hero, full-width gallery, touch targets */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0;
   }
 
-  .split {
-    grid-template-columns: 1fr;
+  .section--statement {
+    padding: 56px 0 64px;
+  }
+
+  .section--gallery {
+    padding: 64px 0 0;
+  }
+
+  .section--gallery .section-copy {
+    margin-bottom: 40px;
+  }
+
+  .gallery__item img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .gallery__caption {
+    padding: 12px 20px 20px;
+  }
+
+  .section--purpose {
+    padding: 64px 0;
+  }
+
+  .section--cta {
+    padding: 56px 0 64px;
+  }
+
+  .section--cta .button {
+    max-width: none;
+    width: 100%;
   }
 }
 
@@ -249,15 +432,59 @@ footer {
     display: none;
   }
 
-  .cards {
-    grid-template-columns: 1fr;
+  .logo {
+    min-height: 44px;
+    padding: 8px 0;
   }
 
-  .hero {
-    padding-top: 64px;
+  .logo img {
+    max-height: 1.4rem;
   }
 
-  .section-title {
-    font-size: 1.7rem;
+  .hero--cinematic {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .hero__content {
+    padding: 32px 24px 48px;
+  }
+
+  .hero--cinematic h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .hero__scroll {
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .cta-row .button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .container,
+  .container--narrow {
+    width: min(100%, 92%);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .gallery__item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gallery__item img {
+    width: 100%;
+    max-width: 100%;
   }
 }
